@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuários</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <!-- contextPath garante que o CSS carregue dentro de /faces/* -->
+    <link rel="stylesheet" href="#{request.contextPath}/css/main.css" />
+</h:head>
+
+<h:body>
+
+    <div class="page">
+
+        <div class="topo">
+            <h1>Cadastro de <span>Usuários</span></h1>
+            <p>Digite um nome e clique em Cadastrar para adicioná-lo à lista.</p>
+        </div>
+
+        <div class="container">
+
+            <!-- Formulário de cadastro -->
+            <h:form id="formCadastro">
+
+                <div class="campo">
+                    <label for="nome">Nome do Usuário</label>
+                    <h:inputText id="nome"
+                                 value="#{pessoa.nome}"
+                                 styleClass="input"
+                                 placeholder="Digite o nome aqui..." />
+                </div>
+
+                <div class="acoes">
+                    <h:commandButton value="Cadastrar"
+                                     action="#{pessoa.cadastrar}"
+                                     styleClass="btn-cadastrar" />
+                    <h:commandButton value="Limpar"
+                                     styleClass="btn-limpar"
+                                     type="reset" />
+                </div>
+
+            </h:form>
+
+            <!-- Divisor -->
+            <div class="divisor">
+                <span>Usuários cadastrados</span>
+            </div>
+
+            <!-- Lista de nomes -->
+            <div class="lista-wrapper">
+
+                <ui:fragment rendered="#{empty pessoa.nomes}">
+                    <p class="lista-vazia">Nenhum usuário cadastrado ainda.</p>
+                </ui:fragment>
+
+                <ui:fragment rendered="#{not empty pessoa.nomes}">
+                    <ul class="lista">
+                        <ui:repeat value="#{pessoa.nomes}" var="item">
+                            <li class="lista-item">
+                                <span class="lista-icone">&#9670;</span>
+                                #{item}
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                    <p class="lista-total">
+                        Total: <span>#{pessoa.nomes.size()}</span>
+                        #{pessoa.nomes.size() == 1 ? 'usuário' : 'usuários'}
+                    </p>
+                </ui:fragment>
+
+            </div>
+
+        </div>
+
+        <div class="rodape">
+            <p>© 2026 — Programação Web para Back-End</p>
+        </div>
+
+    </div>
+
+</h:body>
+</html>

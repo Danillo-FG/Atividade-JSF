@@ -1,0 +1,129 @@
+/* ============================================
+   main.css — Cadastro de Usuários (Atividade 3)
+   Paleta: #1C252F | #112240 | #38BDF8 | #ffffff
+   Fontes: Poppins (principal) | Montserrat (apoio)
+   ============================================ */
+
+@charset "UTF-8";
+
+:root {
+    --bg-pagina:   #112240;
+    --bg-card:     #1C252F;
+    --bg-input:    #0f1e35;
+    --acento:      #38BDF8;
+    --acento-hover:#29a8e0;
+    --branco:      #ffffff;
+    --texto-claro: rgba(255, 255, 255, 0.85);
+    --texto-label: rgba(255, 255, 255, 0.50);
+    --borda:       rgba(56, 189, 248, 0.20);
+    --borda-foco:  #38BDF8;
+    --raio:        8px;
+    --fonte-titulo: 'Poppins', sans-serif;
+    --fonte-corpo:  'Montserrat', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--bg-pagina);
+    color: var(--texto-claro);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.page { width: 100%; max-width: 520px; }
+
+.topo { text-align: center; margin-bottom: 1.8rem; }
+.topo h1 { font-family: var(--fonte-titulo); font-size: 1.7rem; font-weight: 700; color: var(--branco); margin-bottom: 0.35rem; }
+.topo h1 span { color: var(--acento); }
+.topo p { font-size: 0.83rem; color: var(--texto-label); line-height: 1.6; }
+
+.container { background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 12px; padding: 2.2rem 1.8rem; }
+
+.campo { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.2rem; }
+.campo label { font-family: var(--fonte-titulo); font-size: 0.78rem; font-weight: 500; color: var(--texto-label); }
+
+.input {
+    width: 100%;
+    padding: 0.72rem 0.9rem;
+    font-family: var(--fonte-corpo);
+    font-size: 0.9rem;
+    color: var(--branco);
+    background-color: var(--bg-input);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input:hover { border-color: rgba(56,189,248,0.4); }
+.input:focus { border-color: var(--borda-foco); box-shadow: 0 0 0 3px rgba(56,189,248,0.10); }
+.input::-webkit-input-placeholder { color: rgba(255,255,255,0.18); }
+.input::-moz-placeholder           { color: rgba(255,255,255,0.18); }
+
+.acoes { display: flex; gap: 0.7rem; }
+
+.btn-cadastrar {
+    flex: 1;
+    padding: 0.72rem;
+    font-family: var(--fonte-titulo);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #0f1e35;
+    background-color: var(--acento);
+    border: none;
+    border-radius: var(--raio);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-cadastrar:hover { background-color: var(--acento-hover); }
+
+.btn-limpar {
+    padding: 0.72rem 1.1rem;
+    font-family: var(--fonte-titulo);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--texto-label);
+    background-color: transparent;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+.btn-limpar:hover { border-color: var(--acento); color: var(--acento); }
+
+.divisor { display: flex; align-items: center; gap: 0.8rem; margin: 1.8rem 0 1.2rem; }
+.divisor::before, .divisor::after { content: ''; flex: 1; height: 1px; background: var(--borda); }
+.divisor span { font-family: var(--fonte-titulo); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; color: var(--texto-label); white-space: nowrap; text-transform: uppercase; }
+
+.lista-vazia { text-align: center; font-size: 0.83rem; color: var(--texto-label); padding: 0.8rem 0; }
+
+.lista { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.lista-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    background-color: var(--bg-input);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    font-family: var(--fonte-corpo);
+    font-size: 0.9rem;
+    color: var(--texto-claro);
+    transition: border-color 0.2s;
+}
+.lista-item:hover { border-color: rgba(56,189,248,0.4); }
+.lista-icone { font-size: 0.6rem; color: var(--acento); flex-shrink: 0; }
+
+.lista-total { text-align: right; margin-top: 1rem; font-size: 0.78rem; color: var(--texto-label); }
+.lista-total span { color: var(--acento); font-weight: 600; }
+
+.rodape { text-align: center; margin-top: 1.5rem; font-size: 0.72rem; color: var(--texto-label); }
+
+@media (max-width: 480px) {
+    .container { padding: 1.6rem 1.1rem; }
+    .acoes { flex-direction: column; }
+}
