@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "pom.xml",
+      "src": "CadastroUsuarios/pom.xml",
       "use": "@vercel/java"
     }
   ],
